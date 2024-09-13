@@ -4,8 +4,8 @@ import { UserDto } from './user.dto';
 
 @Injectable()
 export class UserService {
-  private readonly secretKey = 'BITS';
-  private readonly refreshKey = 'Hrishikesh';
+  private readonly secretKey = 'Root';
+  private readonly refreshKey = 'Himali';
 
   getUser(): string {
     return 'All Users';
