@@ -1,13 +1,13 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
-import { UsersModule } from './users/users.module';
-import { UsersController } from './users/users.controller'
-import { UsersService } from './users/users.service'
+import { UserModule } from './users/users.module';
+import { UserController } from './users/users.controller';
+import { UserService } from './users/users.service';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
 
 @Module({
-  imports: [UsersModule],
-  controllers: [UsersController],
-  providers: [UsersService],
+  imports: [UserModule],
+  controllers: [UserController],
+  providers: [UserService],
 })
 export class RootModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {

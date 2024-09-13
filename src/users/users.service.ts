@@ -1,26 +1,46 @@
+import * as jwt from 'jsonwebtoken';
 import { Injectable } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
+import { UserDto } from './user.dto';
 
 @Injectable()
-export class UsersService {
-  create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+export class UserService {
+  private readonly secretKey = 'BITS';
+  private readonly refreshKey = 'Hrishikesh';
+
+  getUser(): string {
+    return 'All Users';
   }
 
-  findAll() {
-    return `This action returns all users`;
+  getUserById(id: string): string {
+    return `User with ID ${id}`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  createUser(userDto: UserDto): string {
+    return 'User Created';
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  updateUser(id: string): string {
+    return `User with ID ${id} updated`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  deleteUser(id: string): string {
+    return `User with ID ${id} deleted`;
+  }
+
+  generateToken(userDto: UserDto): { token: string; refreshToken: string } {
+    const payload = {
+      userName: userDto.userName,
+      password: userDto.password,
+    };
+
+    const token = jwt.sign(payload, this.secretKey, {
+      expiresIn: '1h',
+    });
+
+    const refreshToken = payload.userName.concat(payload.password);
+    return {
+      token,
+      refreshToken,
+    };
   }
 }

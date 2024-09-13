@@ -1,4 +1,4 @@
-mport { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
+import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
 import { Observable } from 'rxjs';
 
 const obj = { userName: 'User1', password: 'user@69' };
