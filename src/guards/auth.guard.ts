@@ -15,7 +15,7 @@ export class AuthGuard implements CanActivate {
       return false; // If no token, deny access
     }
 
-    return this.validateRequest(authHeader); // Token validation
+    return this.validateRequest(authHeader); // Token validation o
   }
 
   validateRequest(token: string): boolean {
